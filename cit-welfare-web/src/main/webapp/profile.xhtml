@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>User profile.</title>
+
+	<meta property="fb:app_id" content="820661328009716" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://www.tender4sure.com" />
+	<meta property="og:site_name" content="Tender4Sure" />
+	<meta property="og:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta property="og:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta property="og:image" content="http://www.tender4sure.com/images/tender4sure.com.fb.1200x630.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@tender4sure" />
+	<meta name="twitter:creator" content="@tender4sure" />
+	<meta name="twitter:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="twitter:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta name="twitter:image" content="http://www.tender4sure.com/images/tender4sure.com.twitter.280x150.png" />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<meta name="description" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="keywords" content="search,online,free,private,public,tenders,planned tenders,tender,government,construction,tenderpreneurship,tenderpreneur,south african,johannesburg,SME,BEE,BEEE,business" />
+	<meta name="author" content="Zwide Heights" />
+	<meta name="google-site-verification" content="9U71On1cISapMCzvMrPALIfn0Owrmc0lGMRDLZXgjW8" />
+
+	<script type="text/javascript" src="js/googleanalytics.js"> </script>
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+	<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</h:head>
+
+<h:body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/blue.tender4sure.com320x180.png" alt="Blue tender image." />
+
+			<div id="middle_content">
+
+				<h3>Tender4Sure is an Online Tender Management System</h3>
+				<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Banner -->
+				<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px" data-ad-client="ca-pub-6480511173137308" data-ad-slot="5943672477"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" rendered="#{empty user_id}" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
+			<li><h:outputLink value="about.xhtml">About Us</h:outputLink></li>
+			<li><h:outputLink value="subscribe.xhtml">Subscription</h:outputLink></li>
+			<li><h:outputLink value="services.xhtml">Services</h:outputLink></li>
+			<li><h:outputLink value="download.xhtml">Download</h:outputLink></li>
+			<li><h:outputLink value="tenders.xhtml">Tenders</h:outputLink></li>
+			<li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li>
+		</ul>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of templatetooplate_menu -->
+
+	<div id="tooplate_content">
+
+		<ui:include src="barMenu.xhtml" />
+
+		<div class="content_box">
+
+			<div class="col_w460_noborder">
+
+				<h:outputLabel value="Please logon" rendered="#{ empty user_id}" />
+				<br />
+				<div class="btn_more">
+					<h:outputLink rendered="#{ empty user_id }" value="manageUser.xhtml">Logon or Register.</h:outputLink>
+				</div>
+
+				<h3 style="margin-top: 0">User profile</h3>
+
+				<p:accordionPanel rendered="#{not empty user_id}" style="width:900px; background-image: url('images/white-gray-bg.png');">
+
+					<p:tab title="User details">
+						<h:form>
+							<p:panel style="width:600px; background-image: url('images/white-gray-bg.png');">
+
+								<h:panelGrid columns="2" style="width:100%; font-family:Arial; font-size: 12px; background:rgba(227,247,255,0.4); ">
+
+									<h:outputLabel id="regEmail" for="regEmailInput" value="Email" />
+									<h:inputText requiredMessage="Please enter a valid email address." size="40" required="true" id="regEmailInput" value="#{profileManagedBean.user.email}" label="Email" />
+
+									<h:outputLabel id="regName" for="regNameInput" value="Name" />
+									<h:inputText requiredMessage="Please enter a name." size="20" required="true" id="regNameInput" value="#{profileManagedBean.user.name}" label="Name" />
+
+									<h:outputLabel id="regSurname" for="regSurnameInput" value="Surname" />
+									<h:inputText requiredMessage="Please enter a surname." size="20" required="true" id="regSurnameInput" value="#{profileManagedBean.user.surname}" label="Surname" />
+
+									<h:outputLabel id="createDOBDate" for="datetimeDateOfBirth" value="Date of birth" />
+									<p:calendar id="datetimeDateOfBirth" value="#{profileManagedBean.user.dob}" pattern="MM/dd/yyyy" />
+
+									<h:outputLabel id="createGender" for="genderInput" value="Sector" />
+									<h:selectOneMenu style="width:130px; background-color: #e3f7ff" required="true" label="Gender" id="genderInput" value="#{profileManagedBean.user.gender}">
+										<f:selectItem id="male" itemLabel="male" itemValue="male" />
+										<f:selectItem id="female" itemLabel="female" itemValue="female" />
+									</h:selectOneMenu>
+
+									<h:outputLabel />
+									<p:commandButton action="#{profileManagedBean.updateUser}" id="updateUserButton" icon="ui-icon-refresh" value="Update" title="Update" />
+
+								</h:panelGrid>
+
+							</p:panel>
+						</h:form>
+					</p:tab>
+
+					<p:tab title="Password reset">
+						<h:form>
+							<p:panel style="width:650px; background-image: url('images/white-gray-bg.png');">
+								<h:panelGrid columns="2" style="width:100%; font-family:Arial; font-size: 12px; background:rgba(227,247,255,0.4); ">
+
+									<h:outputLabel id="lblPassword" for="passwordInput" value="Password" />
+									<p:password value="#{profileManagedBean.password}" label="Password" requiredMessage="Please enter password." id="passwordInput" size="20" required="true" feedback="true" inline="true" />
+
+									<h:outputLabel id="lblPasswordConfirm" for="passwordInputConfirmation" value="Password confirmation" />
+									<p:password value="#{profileManagedBean.password}" label="Password confirmation" requiredMessage="Please enter password." id="passwordInputConfirmation" size="20" required="true" feedback="true" inline="true" />
+
+									<h:outputLabel />
+									<p:commandButton action="#{profileManagedBean.changePassword}" id="changePasswordButton" icon="ui-icon-refresh" value="Change password" title="Change password" />
+
+								</h:panelGrid>
+							</p:panel>
+						</h:form>
+
+					</p:tab>
+
+					<p:tab title="Buy Subscription">
+						<h:form>
+							<h:panelGrid id="buyPackagePanel" columns="2" style="width:650px; background-image: url('images/white-gray-bg.png');">
+
+								<h:outputText value="Select a package" />
+								<p:selectOneMenu update="buyPackagePanel" required="true" label="Package" id="packageInput" value="#{subscriptionManagedBean.packageType}">
+									<p:ajax partialSubmit="true" update="buyPackagePanel" event="change" />
+									<f:selectItem itemLabel="Select package" itemValue="copper"  />
+									<f:selectItem id="bronze" itemLabel="Bronze" itemValue="bronze" />
+									<f:selectItem id="silver" itemLabel="Silver" itemValue="silver" />
+									<f:selectItem id="gold" itemLabel="Gold" itemValue="gold" />
+									<f:selectItem id="platinum" itemLabel="Platinum" itemValue="platinum" />
+								</p:selectOneMenu>
+
+								<h:outputText value="Subscription" />
+								<h:outputText value="" rendered="#{subscriptionManagedBean.packageType eq 'copper' }" />
+								<p:selectOneRadio rendered="#{subscriptionManagedBean.packageType eq 'bronze' }" requiredMessage="Please select a subscription package" required="true" value="#{subscriptionManagedBean.amount}" layout="pageDirection">
+									<f:selectItem itemLabel="1 Month - R150.00" itemValue="150.00" />
+									<f:selectItem itemLabel="3 Month - R400.00" itemValue="400.00" />
+									<f:selectItem itemLabel="6 Month - R780.00" itemValue="780.00" />
+									<f:selectItem itemLabel="12 Month- R1600.00" itemValue="1650.00" />
+								</p:selectOneRadio>
+
+								<p:selectOneRadio rendered="#{subscriptionManagedBean.packageType eq 'silver' }" requiredMessage="Please select a subscription package" required="true" value="#{subscriptionManagedBean.amount}" layout="pageDirection">
+									<f:selectItem itemLabel="1 Month - R550.00" itemValue="550.00" />
+									<f:selectItem itemLabel="3 Month - R1450.00" itemValue="1450.00" />
+									<f:selectItem itemLabel="6 Month - R2950.00" itemValue="2950.00" />
+									<f:selectItem itemLabel="12 Month- R5950.00" itemValue="5950.00" />
+								</p:selectOneRadio>
+
+								<p:selectOneRadio rendered="#{subscriptionManagedBean.packageType eq 'gold' }" requiredMessage="Please select a subscription package" required="true" value="#{subscriptionManagedBean.amount}" layout="pageDirection">
+									<f:selectItem itemLabel="1 Month - R950.00" itemValue="950.00" />
+									<f:selectItem itemLabel="3 Month - R2650.00" itemValue="2650.00" />
+									<f:selectItem itemLabel="6 Month - R5550.00" itemValue="5550.00" />
+									<f:selectItem itemLabel="12 Month- R11050.00" itemValue="11050.00" />
+								</p:selectOneRadio>
+
+								<p:selectOneRadio rendered="#{subscriptionManagedBean.packageType eq 'platinum' }" requiredMessage="Please select a subscription package" required="true" value="#{subscriptionManagedBean.amount}" layout="pageDirection">
+									<f:selectItem itemLabel="1 Month - R13000.00" itemValue="13000.00" />
+									<f:selectItem itemLabel="3 Month - R36000.00" itemValue="36000.00" />
+									<f:selectItem itemLabel="6 Month - R75000.00" itemValue="75000.00" />
+									<f:selectItem itemLabel="12 Month- R149000.00" itemValue="149000.00" />
+								</p:selectOneRadio>
+
+								<h:link target="_blank" href="http://www.tender4sure.com/tandc.xhtml" value="Terms and conditions" />
+								<p:selectBooleanCheckbox requiredMessage="Please confirm acceptance of terms and conditions." required="true" id="tc" itemLabel="I accept terms and conditions." value="#{subscriptionManagedBean.terms}" />
+
+								<h:outputText value="" />
+								<h:commandLink action="#{subscriptionManagedBean.paynow}">
+									<p:graphicImage value="images/subscription/paynow.png" />
+								</h:commandLink>
+
+							</h:panelGrid>
+
+						</h:form>
+
+						<p:panel style="width:850px; background-image: url('images/white-gray-bg.png');">
+
+							<p:dataTable var="sub" value="#{profileManagedBean.subscriptions}">
+								
+								<p:column headerText="Subscription Status">
+									<h:outputText value="#{sub.status}" />
+								</p:column>
+
+								<p:column headerText="Payment Status">
+									<h:outputText value="#{sub.payment.paymentResponse.transactionStatus}" />
+								</p:column>
+
+								<p:column headerText="Package">
+									<h:outputText value="#{sub.subscriptionItem.packageName}" />
+								</p:column>
+								
+								<p:column headerText="Note">
+									<h:outputText value="#{sub.note}" />
+								</p:column>
+
+								<p:column headerText="Start date">
+									<h:outputText value="#{sub.startDate}" />
+								</p:column>
+
+								<p:column headerText="End date">
+									<h:outputText value="#{sub.endDate}" />
+								</p:column>
+								
+							</p:dataTable>
+
+						</p:panel>
+					</p:tab>
+
+				</p:accordionPanel>
+			</div>
+
+			<div class="cleaner"></div>
+		</div>
+
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+
+		<div id="tooplate_footer">
+
+			Copyright © 2016 <a href="http://www.tender4sure.com">Tender4Sure</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/disclaimer.html">Disclaimer</a>
+		</div>
+
+	</div>
+
+</h:body>
+</html>

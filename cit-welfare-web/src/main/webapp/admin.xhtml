@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Administration.</title>
+
+	<meta property="fb:app_id" content="820661328009716" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://www.tender4sure.com" />
+	<meta property="og:site_name" content="Tender4Sure" />
+	<meta property="og:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta property="og:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta property="og:image" content="http://www.tender4sure.com/images/tender4sure.com.fb.1200x630.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@tender4sure" />
+	<meta name="twitter:creator" content="@tender4sure" />
+	<meta name="twitter:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="twitter:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta name="twitter:image" content="http://www.tender4sure.com/images/tender4sure.com.twitter.280x150.png" />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<meta name="description" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="keywords" content="tender" />
+		<meta name="keywords" content="private tenders,planned tenders,tender,government,construction,tenderpreneurship,tenderpreneur,south african,johannesburg,SME,BEE,BEEE,business" />
+	<meta name="google-site-verification" content="9U71On1cISapMCzvMrPALIfn0Owrmc0lGMRDLZXgjW8" />
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+	<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script type="text/javascript" src="js/googleanalytics.js"> </script>
+
+</h:head>
+
+<h:body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/blue.tender4sure.com320x180.png" alt="Blue tender image." />
+
+			<div id="middle_content">
+				<h3>Tender4Sure is an Online Tender Management System</h3>
+				<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Banner -->
+				<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px" data-ad-client="ca-pub-6480511173137308" data-ad-slot="5943672477"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" rendered="#{empty user_id}" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
+			<li><h:outputLink value="about.xhtml">About Us</h:outputLink></li>
+			<li><h:outputLink value="subscribe.xhtml">Subscription</h:outputLink></li>
+			<li><h:outputLink value="services.xhtml">Services</h:outputLink></li>
+			<li><h:outputLink value="download.xhtml">Download</h:outputLink></li>
+			<li><h:outputLink value="tenders.xhtml">Tenders</h:outputLink></li>
+			<li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li>
+		</ul>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of templatetooplate_menu -->
+
+	<div id="tooplate_content">
+
+		<ui:include src="barMenu.xhtml" />
+
+		<div class="content_box">
+
+			<div class="col_w460_noborder">
+
+				<h:form id="profileManagementForm">
+
+					<h3 style="margin-top: 0">Administration</h3>
+
+					<p:tabView orientation="left">
+
+						<p:tab title="Reference Data Stats">
+
+							<h:panelGrid columns="2" cellpadding="10">
+
+								<h:outputLabel for="countCities" value="Cities" />
+								<h:outputText id="countCities" value="#{adminManagedBean.countCities}" label="Cities" />
+
+								<h:outputLabel for="countCountries" value="Countries" />
+								<h:outputText id="countCountries" value="#{adminManagedBean.countCountries}" label="Countries" />
+
+								<h:outputLabel for="countSubRegions" value="SubRegions" />
+								<h:outputText id="countSubRegions" value="#{adminManagedBean.countSubRegions}" label="SubRegions" />
+
+							</h:panelGrid>
+
+						</p:tab>
+
+						<p:tab title="Load Reference Data">
+							<p:growl id="messages1" showDetail="true" />
+							<p:commandButton update="messages1" actionListener="#{adminManagedBean.loadCountriesProvinciesCities}" id="loadAllButton" value="Load countries, provincies, cities" title="Load countries, provincies, cities" />
+							<br />
+							<br />
+
+							<p:commandButton update="messages1" actionListener="#{adminManagedBean.loadCountries}" id="loadCountryButton" value="Load countries" title="Load countries" />
+							<br />
+							<p:commandButton update="messages1" actionListener="#{adminManagedBean.loadProvincies()}" id="loadProvinceButton" value="Load provincies" title="Load provincies" />
+							<br />
+							<p:commandButton update="messages1" actionListener="#{adminManagedBean.loadCities}" id="loadCityButton" value="Load cities" title="Load cities" />
+						</p:tab>
+
+						<p:tab title="Load Sector Type Data">
+							<p:growl id="messages2" showDetail="true" />
+							<p:commandButton update="messages2" actionListener="#{adminManagedBean.loadSectorType}" value="Load sector types" title="Load sector types" />
+						</p:tab>
+
+						<p:tab title="Load Tenders">
+							<p:growl id="messages3" showDetail="true" />
+							<h:panelGrid value="SAA Tenders" columns="2" cellpadding="10" border="1" cellspacing="1">
+
+								<h:outputLabel for="mpi" value="Max pages" />
+								<h:inputText id="mpi" value="#{adminManagedBean.saTendersPageIndexMax}" label="Max page index" />
+								<h:outputLabel for="timeSec" value="Time delay(sec)" />
+								<h:inputText id="timeSec" value="#{adminManagedBean.saTendersTimeDelay}" label="Time delay(sec)" />
+								<h:outputLabel />
+								<p:commandButton update="messages3" actionListener="#{adminManagedBean.screenScrapSATenders}" value="Load from SSA Tenders" title="Load from SSA Tenders" />
+
+							</h:panelGrid>
+							<br />
+							<h:panelGrid value="E Tenders" columns="2" cellpadding="10" border="1" cellspacing="1">
+
+								<h:outputLabel for="mpiE" value="Max pages" />
+								<h:inputText id="mpiE" value="#{adminManagedBean.eTendersPageIndexMax}" label="Max page index" />
+								<h:outputLabel for="timeSecE" value="Time delay(sec)" />
+								<h:inputText id="timeSecE" value="#{adminManagedBean.eTendersTimeDelay}" label="Time delay(sec)" />
+								<h:outputLabel />
+								<p:commandButton update="messages3" actionListener="#{adminManagedBean.screenScrapETenders}" value="Load from ETenders" title="Load from ETenders" />
+
+							</h:panelGrid>
+
+							<br />
+							<h:panelGrid value="Public Works Gov" columns="2" cellpadding="10" border="1" cellspacing="1">
+
+								<p:commandButton update="messages3" actionListener="#{adminManagedBean.screenScrapPublicWorks}" value="Load from Public Works" title="Load from Public Works" />
+
+							</h:panelGrid>
+
+							<br />
+							<h:panelGrid value="Cape Town Tender Portal" columns="2" cellpadding="10" border="1" cellspacing="1">
+
+								<p:commandButton update="messages3" actionListener="#{adminManagedBean.screenScrapCapetownTenderPortal}" value="Load from Cape Town Tender Portal" title="Load from Cape Town Tender Portal" />
+
+							</h:panelGrid>
+
+
+
+
+
+							<br />
+							<h:panelGrid value="Eskom" columns="2" cellpadding="10" border="1" cellspacing="1">
+
+								<h:outputLabel for="startEskomId" value="Start Eskom id" />
+								<h:inputText id="startEskomId" value="#{adminManagedBean.eskomStartId}" label="Start Eskom id" />
+
+								<h:outputLabel for="endEskomId" value="End Eskom id" />
+								<h:inputText id="endEskomId" value="#{adminManagedBean.eskomEndId}" label="End Eskom id" />
+
+								<h:outputLabel />
+								<p:commandButton update="messages3" actionListener="#{adminManagedBean.screenScrapEskomTenders}" value="Load from Eskom" title="Load from Eskom" />
+
+							</h:panelGrid>
+
+
+						</p:tab>
+
+						<p:tab title="Refresh Singleton Reference Data">
+							<p:growl id="messages4" showDetail="true" />
+							<p:commandButton update="messages4" actionListener="#{referenceCacheSingleton.refreshSingleton}" value="Refresh" title="Refresh" />
+						</p:tab>
+
+					</p:tabView>
+
+				</h:form>
+
+			</div>
+
+			<div class="cleaner"></div>
+		</div>
+
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+
+		<div id="tooplate_footer">
+
+			Copyright © 2016 <a href="http://www.tender4sure.com">Tender4Sure</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/disclaimer.html">Disclaimer</a>
+		</div>
+
+	</div>
+
+</h:body>
+</html>

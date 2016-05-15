@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Tender reference: <h:outputText value="#{viewTenderManagedBean.tender.reference}" /> - <h:outputText value="#{viewTenderManagedBean.tender.title}" />
+	</title>
+
+	<meta property="fb:app_id" content="820661328009716" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://tender4sure.com/viewTender.xhtml?id=#{viewTenderManagedBean.tender.id}" />
+	<meta property="og:site_name" content="Tender4Sure" />
+	<meta property="og:title" content="#{viewTenderManagedBean.tender.title}" />
+	<meta property="og:description" content="#{viewTenderManagedBean.tender.description}" />
+	<meta property="og:image" content="http://www.tender4sure.com/images/tender4sure.com.fb.1200x630.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@tender4sure" />
+	<meta name="twitter:creator" content="@tender4sure" />
+	<meta name="twitter:title" content="#{viewTenderManagedBean.tender.title}" />
+	<meta name="twitter:description" content="#{viewTenderManagedBean.tender.description}" />
+	<meta name="twitter:image" content="http://www.tender4sure.com/images/tender4sure.com.twitter.280x150.png" />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<meta name="description" content="#{viewTenderManagedBean.tender.description}" />
+	<meta name="keywords" content="#{viewTenderManagedBean.tender.reference},private,public,tenders,planned tenders,tender,government,construction,tenderpreneurship,tenderpreneur,south african,johannesburg,SME,BEE,BEEE,business" />
+	<meta name="author" content="Zwide Heights" />
+	<meta name="google-site-verification" content="9U71On1cISapMCzvMrPALIfn0Owrmc0lGMRDLZXgjW8" />
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script src="https://apis.google.com/js/platform.js" async="async" defer="defer" type=""></script>
+
+	<script type="text/javascript" src="js/googleanalytics.js"> </script>
+
+	<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+
+	<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+</h:head>
+
+<h:body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/blue.tender4sure.com320x180.png" alt="Blue tender image." />
+
+			<div id="middle_content">
+
+				<h3>Tender4Sure is an Online Tender Management System</h3>
+				<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Banner -->
+				<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px" data-ad-client="ca-pub-6480511173137308" data-ad-slot="5943672477"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" rendered="#{empty user_id}" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
+			<li><h:outputLink value="about.xhtml">About Us</h:outputLink></li>
+			<li><h:outputLink value="subscribe.xhtml">Subscription</h:outputLink></li>
+			<li><h:outputLink value="services.xhtml">Services</h:outputLink></li>
+			<li><h:outputLink value="download.xhtml">Download</h:outputLink></li>
+			<li><h:outputLink value="tenders.xhtml">Tenders</h:outputLink></li>
+			<li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li>
+		</ul>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of templatetooplate_menu -->
+
+	<div id="fb-root"></div>
+	<script type="">(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5&amp;appId=820661328009716";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<div id="tooplate_content">
+
+		<h:form id="socialButtonsForm">
+			<p:toolbar id="tb">
+				<f:facet name="left">
+
+					<p:commandButton action="tenders.xhtml?faces-redirect=true" icon="ui-icon-search" />
+					<p:commandButton rendered="#{ viewTenderManagedBean.editableAction }" icon="ui-icon-trash" action="#{ viewTenderManagedBean.deleteTender }" />
+					<p:commandButton value="Print tender" type="button" icon="ui-icon-print">
+						<p:printer target="areaPrintable" />
+					</p:commandButton>
+
+					<p:commandButton rendered="#{viewTenderManagedBean.editableAction}" update=":tenderForm :updateTenderFilesForm :updateTenderMembersForm :updateTenderAddressesForm " action="#{viewTenderManagedBean.unlockTenderForEdit}" id="editCommandUnabler" icon="ui-icon-edit" value="Edit" />
+
+					<p:commandButton rendered="#{viewTenderManagedBean.tender.documents.size() &gt; 0}" actionListener="#{ viewTenderManagedBean.downloadDocuments }" id="downloadButton" value="Download documents" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+						<p:fileDownload value="#{ viewTenderManagedBean.zipFile }" />
+					</p:commandButton>
+
+					<p:commandButton rendered="#{ not empty user_id }" update=":tenderForm:growl" actionListener="#{viewTenderManagedBean.emailTender}" icon="ui-icon-mail-closed" id="emailButton" value="Email tender" title="Email tender" />
+
+					<a href="whatsapp://send?text=http://www.tender4sure.com/viewTenderShare.xhtml?id=#{viewTenderManagedBean.tender.id}&amp;ms=#{viewTenderManagedBean.tender.publicationDate.time} Tender Info: #{viewTenderManagedBean.tender.id}!" data-action="share/whatsapp/share"> <img src="images/icon-whatsapp.png" alt="Tender" />
+					</a>
+
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.tender4sure.com/viewTenderShare.xhtml?id=#{viewTenderManagedBean.tender.id}&amp;ms=#{viewTenderManagedBean.tender.publicationDate.time}" data-via="tender4sure" data-related="tender4sure" data-hashtags="tender4sure">Tweet</a>
+
+					<script type="IN/Share" data-url="http://www.tender4sure.com/viewTenderShare.xhtml?id=#{viewTenderManagedBean.tender.id}&amp;ms=#{viewTenderManagedBean.tender.publicationDate.time}"></script>
+
+					<!-- Place this tag where you want the +1 button to render. -->
+					<div class="g-plusone" data-size="small" data-annotation="inline" data-width="300"></div>
+
+					<div class="fb-like" data-href="http://www.tender4sure.com/viewTenderShare.xhtml?id=#{viewTenderManagedBean.tender.id}&amp;ms=#{viewTenderManagedBean.tender.publicationDate.time}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+					<script type="">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+				</f:facet>
+
+				<f:facet name="right">
+
+				</f:facet>
+
+			</p:toolbar>
+
+			<p:sticky target="tb" />
+		</h:form>
+
+		<p:panel id="areaPrintable" style="border: none; background-color: transparent !important;">
+
+			<div class="col_w460 ">
+
+				<h:form>
+				</h:form>
+
+				<h:form id="tenderForm">
+					<p:growl id="growl" showDetail="true" />
+					<ui:include src="sessionTenderDetail.xhtml" />
+				</h:form>
+
+			</div>
+
+			<div class="col_w460 last_col">
+
+				<p:panel id="viewTenderPrintableSupplementary" header="Supplementary Information" style="margin-bottom:20px; width:100%; font-family:Arial; font-size: 11px; background-image: url('images/white-gray-bg.png'); ">
+
+					<h:form id="updateTenderFilesForm">
+
+						<p:growl id="messagesFile" showDetail="true" />
+
+						<p:dataTable style="width:100%; font-family:Arial; font-size: 11px;" id="fileTable" var="filesLoaded" value="#{viewTenderManagedBean.docsL}" rows="5" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15" resizableColumns="true" resizeMode="expand">
+
+							<f:facet name="header">
+							           Tender Documents
+							        </f:facet>
+
+							<p:column headerText="X" rendered="#{ (!viewTenderManagedBean.readonly) }">
+								<p:commandButton immediate="true" icon="ui-icon-trash" actionListener="#{viewTenderManagedBean.removeFile(filesLoaded.id)}" />
+							</p:column>
+
+							<p:column headerText="Filename">
+								<h:outputText value="#{filesLoaded.filename}" />
+							</p:column>
+
+							<p:column headerText="Size">
+								<h:outputText value="#{filesLoaded.size}" />
+							</p:column>
+
+						</p:dataTable>
+
+						<h:panelGrid id="documentCommandsPanelGrid" columns="2" rendered="#{ (viewTenderManagedBean.tender.documents.size() &gt; 0) }">
+
+							<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+								<h:graphicImage value="/images/ajaxLoadingBar.gif" />
+							</p:dialog>
+
+							<script type="text/javascript">
+									function start() {
+									    PF('statusDialog').show();
+									}
+									 
+									function stop() {
+									    PF('statusDialog').hide();
+									}
+									</script>
+
+						</h:panelGrid>
+
+					</h:form>
+
+					<br />
+					<h:form id="updateTenderMembersForm">
+
+						<p:growl id="messagesMember" showDetail="true" />
+						<p:dataTable style="width:100%; font-family:Arial; font-size: 11px;" scrollable="true" scrollWidth="400" id="memberTable" editable="#{ (!viewTenderManagedBean.readonly) }" rendered="#{ (viewTenderManagedBean.tender.teams.size() &gt; 0) || (!viewTenderManagedBean.readonly)  }" var="membersLoaded" value="#{viewTenderManagedBean.teamsL}" rows="5" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15" resizableColumns="true" resizeMode="expand">
+
+							<f:facet name="header">
+						           Members
+						        </f:facet>
+
+							<p:ajax event="rowEdit" listener="#{viewTenderManagedBean.onRowEditMembers}" update=":updateTenderMembersForm:messagesMember" />
+			       				<p:ajax event="rowEditCancel" listener="#{viewTenderManagedBean.onRowCancelMembers}" update=":updateTenderMembersForm:messagesMember" />
+
+							<p:column headerText="X" rendered="#{ (!viewTenderManagedBean.readonly) }">
+								<p:commandButton update=":updateTenderMembersForm:messagesMember :updateTenderMembersForm" icon="ui-icon-trash" actionListener="#{ viewTenderManagedBean.removeMember(membersLoaded) }" />
+							</p:column>
+
+							<p:column headerText="Company">
+								<h:outputText value="#{membersLoaded.company}" />
+							</p:column>
+
+							<p:column headerText="Contact">
+								<h:outputText value="#{membersLoaded.contactPerson}" />
+							</p:column>
+
+							<p:column headerText="Email">
+								<h:outputText value="#{membersLoaded.email}" />
+							</p:column>
+
+							<p:column headerText="Role">
+								<h:outputText value="#{membersLoaded.memberRole}" />
+							</p:column>
+
+							<p:column headerText="Telephone">
+								<h:outputText value="#{membersLoaded.telephone}" />
+							</p:column>
+
+							<p:column style="width:25px" headerText="Edit" rendered="#{ (!viewTenderManagedBean.readonly) }">
+								<p:rowEditor />
+							</p:column>
+
+						</p:dataTable>
+
+					</h:form>
+
+					<br />
+					<h:form id="updateTenderAddressesForm">
+
+						<p:growl id="messagesAddress" showDetail="true" />
+						<p:dataTable style="width:100%; font-family:Arial; font-size: 11px;" rendered="#{ (!viewTenderManagedBean.readonly) || (viewTenderManagedBean.tender.address.size() &gt; 0) }" scrollable="true" editable="#{ (!viewTenderManagedBean.readonly) }" scrollWidth="400" id="addressTable" var="addresssLoaded" value="#{viewTenderManagedBean.addressesL}" rows="5" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15" resizableColumns="true" resizeMode="expand">
+
+							<f:facet name="header">
+						           Address
+						        </f:facet>
+
+							<p:ajax event="rowEdit" listener="#{viewTenderManagedBean.onRowEditAddresses}" update=":updateTenderAddressesForm:messagesAddress" />
+			       				<p:ajax event="rowEditCancel" listener="#{viewTenderManagedBean.onRowCancelAddresses}" update=":updateTenderAddressesForm:messagesAddress" />
+
+							<p:column headerText="X" rendered="#{ (!viewTenderManagedBean.readonly) }">
+								<p:commandButton icon="ui-icon-trash" action="#{viewTenderManagedBean.removeAddress(addresssLoaded)}" />
+							</p:column>
+
+							<p:column headerText="Type">
+								<h:outputText value="#{addresssLoaded.type}" />
+							</p:column>
+
+							<p:column headerText="Unit">
+								<h:outputText value="#{addresssLoaded.unit}" />
+							</p:column>
+
+							<p:column headerText="Street">
+								<h:outputText value="#{addresssLoaded.street}" />
+							</p:column>
+
+							<p:column headerText="Country">
+								<h:outputText value="#{addresssLoaded.city.province.country.name}" />
+							</p:column>
+
+							<p:column headerText="Province">
+								<h:outputText value="#{addresssLoaded.city.province.name}" />
+							</p:column>
+
+							<p:column headerText="City">
+								<h:outputText value="#{addresssLoaded.city.name}" />
+							</p:column>
+
+							<p:column style="width:25px" rendered="#{ (!viewTenderManagedBean.readonly) }">
+								<p:rowEditor />
+							</p:column>
+
+						</p:dataTable>
+
+					</h:form>
+
+				</p:panel>
+
+			</div>
+
+		</p:panel>
+
+		<div class="cleaner"></div>
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+		<div id="tooplate_footer">
+			Copyright © 2016 <a href="http://www.tender4sure.com">Tender4Sure</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/disclaimer.html">Disclaimer</a>
+		</div>
+
+	</div>
+
+</h:body>
+</html>

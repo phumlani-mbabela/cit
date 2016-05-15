@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="zwideheightsJobsEmailNotification" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+    
+	
+	<step id="emailNotificationChunk" >
+		<chunk item-count="3">
+			<reader ref="emailNotificationItemReader"></reader>
+			<processor ref="emailNotificationItemProcessor"></processor>
+			<writer ref="emailNotificationItemWriter"></writer>
+		</chunk>
+	</step>
+	
+</job>

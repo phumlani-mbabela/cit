@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098).</title>
+
+	<meta property="og:title"       content="CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098)." />
+	<meta property="og:description" content="CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098)." />
+
+	<meta name="twitter:title"       content="CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098)." />
+	<meta name="twitter:description" content="CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098)." />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<meta name="description" content="CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098)." />
+	<meta name="keywords"    content="CIT,Burial Services, Islam" />
+	<meta name="author"       content="Zwide Heights(Phumlani Mbabela)" />
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+</h:head>
+
+<body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/cit-spin.gif" alt="CIT - Burial Services." />
+
+			<div id="middle_content">
+
+				<h3>CIT - Burial Services.</h3>
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml" class="current">Home</h:outputLink></li>
+			<li><h:outputLink value="graves.xhtml">Graves</h:outputLink></li>
+			<li><h:outputLink value="grave.xhtml">Capture</h:outputLink></li>
+			<!-- <li><h:outputLink value="about.xhtml">About Us</h:outputLink></li> -->
+			<!--   <li><h:outputLink value="services.xhtml">Services</h:outputLink></li> -->
+			
+			<!-- <li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li> -->
+		</ul>
+
+	</div>
+
+	<div id="tooplate_content">
+
+		<div class="btn_more">
+			<h:outputLink rendered="#{ empty user_id }" value="manageUser.xhtml">Logon or Register.</h:outputLink>
+			
+			<!--   -->
+			
+		</div>
+
+		<div id="services">
+		</div>
+
+		<div class="content_box content_box_last">
+		</div>
+
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+
+		<div id="tooplate_footer">
+			Copyright © 2016 <a href="http://www.cit.com">CIT</a> &nbsp; &nbsp; &nbsp; <a href="http://www.cit.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.cit.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.cit.com/disclaimer.html">Disclaimer</a> 
+		</div>
+
+	</div>
+
+</body>
+</html>

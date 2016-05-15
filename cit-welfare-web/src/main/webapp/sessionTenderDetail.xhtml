@@ -1,0 +1,301 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+	<p:dataTable rowIndexVar="rowIndex" style="background:rgba(227,247,255,0.4); width:100%; font-family:Arial; font-size: 11px;" tableStyle="width:auto" scrollable="true" id="tenderTable" var="tenderview" value="#{tendersManagedBean.tenders}" rows="1" selectionMode="single" rowKey="#{tenderview.id}" selection="#{viewTenderManagedBean.tender}" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="1" emptyMessage="No Records to display." resizableColumns="true"
+		resizeMode="expand">
+
+		<p:ajax event="page" listener="#{viewTenderManagedBean.setSelectedTenderFromView}" update="tenderTable" />
+
+		<f:metadata>
+			<f:viewParam name="id" value="#{viewTenderManagedBean.tender.id}" />
+			<f:viewParam name="ms" value="#{viewTenderManagedBean.tender.publicationDate.time}" />
+		</f:metadata>
+
+		<p:column headerText="#{tenderview.title}" resizable="true">
+
+			<p:panel id="viewTenderPrintable" header="Tender Information" style="margin-bottom:1px; background-image: url('images/white-gray-bg.png');">
+
+				<p:growl id="growl" showDetail="true" />
+
+				<h:panelGrid id="regTenderPanelGrid" style="width:100%; font-family:Arial; font-size: 12px; background:rgba(227,247,255,0.3);">
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.reference}">
+						<p:column style="width:20%">
+							<h:outputLabel style="width:20px;" id="createReference" for="referenceInput" value="Reference" rendered="#{ not empty viewTenderManagedBean.tender.reference}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText style="width:80%;" readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender reference." size="20" required="true" id="referenceInput" rendered="#{ not empty viewTenderManagedBean.tender.reference}" value="#{viewTenderManagedBean.tender.reference}" label="Reference" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.title}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createTitle" for="titleInput" value="Title" rendered="#{ not empty viewTenderManagedBean.tender.title}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender title." size="40" required="true" id="titleInput" rendered="#{ not empty viewTenderManagedBean.tender.title}" value="#{viewTenderManagedBean.tender.title}" label="Title" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.issuer}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createIssuer" for="issuerInput" value="Issuer" rendered="#{ not empty viewTenderManagedBean.tender.issuer}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender issuer" size="40" required="true" id="issuerInput" rendered="#{ not empty viewTenderManagedBean.tender.issuer}" value="#{viewTenderManagedBean.tender.issuer}" label="Issuer" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.status}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createStatus" for="statusInput" value="Status" rendered="#{ not empty viewTenderManagedBean.tender.status}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender status" size="40" required="true" id="statusInput" rendered="#{ not empty viewTenderManagedBean.tender.status}" value="#{viewTenderManagedBean.tender.status}" label="Status" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.website}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createWebsite" for="websiteInput" value="Website" rendered="#{ not empty viewTenderManagedBean.tender.website}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:outputLink value="#{viewTenderManagedBean.tender.website}" target="_blank"> Click </h:outputLink>
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender website" size="40" required="false" id="websiteInput" rendered="#{ not empty viewTenderManagedBean.tender.website}" value="#{viewTenderManagedBean.tender.website}" label="Website" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.department}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createDepartment" for="departmentInput" value="Department" rendered="#{ not empty viewTenderManagedBean.tender.department}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter department" size="40" required="false" id="departmentInput" rendered="#{ not empty viewTenderManagedBean.tender.department}" value="#{viewTenderManagedBean.tender.department}" label="Department" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.specialConditions}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createSpecialConditions" for="specialConditionsInput" value="Special Conditions" rendered="#{ not empty viewTenderManagedBean.tender.specialConditions}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender special conditions" size="40" required="false" id="specialConditionsInput" rendered="#{ not empty viewTenderManagedBean.tender.website}" value="#{viewTenderManagedBean.tender.website}" label="Website" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty tenderManagedBean.sectorType}">
+						<p:column style="width:20%">
+							<h:outputLabel for="sectorTypeInput" value="Sector type" rendered="#{ not empty tenderManagedBean.sectorType}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:selectOneMenu disabled="#{viewTenderManagedBean.readonly}" required="true" label="Sector type" id="sectorTypeInput" rendered="#{ not empty tenderManagedBean.sectorType }" value="#{tenderManagedBean.sectorType}">
+								<f:selectItem itemLabel="Select a sector type." itemValue="-1" noSelectionOption="true" />
+								<f:selectItems value="#{ referenceCacheSingleton.sectorTypes }" var="obj" itemLabel="#{obj.name} - #{obj.count}" itemValue="#{obj.name}" />
+							</h:selectOneMenu>
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.cost }">
+						<p:column style="width:20%">
+							<h:outputLabel id="createCost" for="costInput" value="Cost" rendered="#{not empty viewTenderManagedBean.tender.cost }" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender cost." size="20" required="true" id="costInput" rendered="#{not empty viewTenderManagedBean.tender.cost }" value="#{viewTenderManagedBean.tender.cost}" label="Cost">
+								<f:validateDoubleRange minimum="0.0" maximum="99999999999.9" />
+							</h:inputText>
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.contractPeriod}">
+						<p:column style="width:20%">
+							<h:outputLabel id="contractPeriodCost" for="contractPeriodInput" value="Contract Period" rendered="#{not empty viewTenderManagedBean.tender.contractPeriod}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter tender contract period." size="20" required="true" id="contractPeriodInput" rendered="#{not empty viewTenderManagedBean.tender.contractPeriod}" value="#{viewTenderManagedBean.tender.contractPeriod}" label="Contract Period">
+								<f:validateDoubleRange minimum="0" maximum="2000" />
+							</h:inputText>
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.startDate}">
+						<p:column style="width:20%">
+							<h:outputLabel rendered="#{ not empty viewTenderManagedBean.tender.startDate}" id="createStartDate" for="datetimeStartCal" value="Start date" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:calendar readonly="#{viewTenderManagedBean.readonly}" id="datetimeStartCal" rendered="#{not empty viewTenderManagedBean.tender.startDate}" value="#{viewTenderManagedBean.tender.startDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.endDate }">
+						<p:column style="width:20%">
+							<h:outputLabel id="createEndDate" for="datetimeEndCal" value="End date" rendered="#{ not empty viewTenderManagedBean.tender.endDate }" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:calendar readonly="#{viewTenderManagedBean.readonly}" id="datetimeEndCal" rendered="#{ not empty viewTenderManagedBean.tender.endDate }" value="#{viewTenderManagedBean.tender.endDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.closingDate }">
+						<p:column style="width:20%">
+							<h:outputLabel id="closingDateDate" for="datetimeClosingCal" value="Closing date" rendered="#{ not empty viewTenderManagedBean.tender.closingDate }" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:calendar readonly="#{viewTenderManagedBean.readonly}" id="datetimeClosingCal" rendered="#{ not empty viewTenderManagedBean.tender.closingDate }" value="#{viewTenderManagedBean.tender.closingDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.meetingDate }">
+						<p:column style="width:20%">
+							<h:outputLabel id="meetingDateDate" for="datetimeMeetingCal" value="Meeting date" rendered="#{ not empty viewTenderManagedBean.tender.meetingDate }" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:calendar readonly="#{viewTenderManagedBean.readonly}" id="datetimeMeetingCal" rendered="#{ not empty viewTenderManagedBean.tender.meetingDate }" value="#{viewTenderManagedBean.tender.meetingDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.publicationDate}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createPublicationDate" for="datetimePublicationDateCal" value="Publication Date" rendered="#{not empty viewTenderManagedBean.tender.publicationDate}" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:calendar readonly="#{viewTenderManagedBean.readonly}" id="datetimePublicationDateCal" rendered="#{not empty viewTenderManagedBean.tender.publicationDate}" value="#{viewTenderManagedBean.tender.publicationDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.sector }">
+						<p:column style="width:20%">
+							<h:outputLabel id="createSector" for="sectorInput" value="Sector" rendered="#{not empty viewTenderManagedBean.tender.sector }" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:selectOneMenu disabled="#{viewTenderManagedBean.readonly}" required="true" label="Sector" id="sectorInput" rendered="#{not empty viewTenderManagedBean.tender.sector}" value="#{viewTenderManagedBean.tender.sector}">
+								<f:selectItem id="private" itemLabel="Private" itemValue="private" />
+								<f:selectItem id="public" itemLabel="Public-Gov" itemValue="public" />
+							</h:selectOneMenu>
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.description }">
+						<p:column style="width:20%">
+							<h:outputLabel id="createDescription" for="descriptionInput" value="Description" rendered="#{ not empty viewTenderManagedBean.tender.description }" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:inputTextarea readonly="#{viewTenderManagedBean.readonly}" id="descriptionInput" rows="5" cols="40" counter="display" maxlength="4000" rendered="#{ not empty viewTenderManagedBean.tender.description}" value="#{viewTenderManagedBean.tender.description}" counterTemplate="{0} characters remaining." autoResize="true" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.description }">
+						<p:column style="width:20%">
+							<h:outputLabel id="displayDummy" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:outputLabel id="display" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.floorType }">
+						<p:column style="width:20%">
+							<h:outputLabel id="createFloorType" for="floorTypeInput" value="Floor Type" rendered="#{ not empty viewTenderManagedBean.tender.floorType }" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter floor type." size="30" required="false" id="floorTypeInput" rendered="#{ not empty viewTenderManagedBean.tender.floorType }" value="#{viewTenderManagedBean.tender.floorType}" label="Floor type" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.roofType}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createRoofType" for="roofTypeInput" value="Roof Type" rendered="#{ not empty viewTenderManagedBean.tender.roofType}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter roof type." size="30" required="false" id="roofTypeInput" value="#{viewTenderManagedBean.tender.roofType}" rendered="#{ not empty viewTenderManagedBean.tender.roofType}" label="Roof type" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.buildingType }">
+						<p:column style="width:20%">
+							<h:outputLabel id="createBuildingType" for="roofBuildingInput" value="Building Type" rendered="#{ not empty viewTenderManagedBean.tender.buildingType }" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter building type." size="30" required="false" id="roofBuildingInput" rendered="#{ not empty viewTenderManagedBean.tender.buildingType }" value="#{viewTenderManagedBean.tender.buildingType}" label="Building type" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.storeys}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createStoreys" for="storeysInput" value="Storeys" rendered="#{not empty viewTenderManagedBean.tender.storeys}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" requiredMessage="Please enter levels." size="8" required="false" id="storeysInput" rendered="#{not empty viewTenderManagedBean.tender.storeys}" value="#{viewTenderManagedBean.tender.storeys}" label="Storeys" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.piling}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createPiling" for="pilingInput" value="Piling" rendered="#{not empty viewTenderManagedBean.tender.piling}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:selectBooleanCheckbox readonly="#{viewTenderManagedBean.readonly}" required="false" id="pilingInput" rendered="#{ not empty viewTenderManagedBean.tender.piling }" value="#{viewTenderManagedBean.tender.piling}" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{not empty viewTenderManagedBean.tender.size}">
+						<p:column style="width:20%">
+							<h:outputLabel id="createSize" for="sizeInput" value="Size" rendered="#{not empty viewTenderManagedBean.tender.size}" />
+						</p:column>
+						<p:column style="width:80%">
+							<h:inputText readonly="#{viewTenderManagedBean.readonly}" size="8" required="false" id="sizeInput" rendered="#{not empty viewTenderManagedBean.tender.size}" value="#{viewTenderManagedBean.tender.size}" label="size" />
+						</p:column>
+					</p:row>
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.city.province.country.id}">
+						<p:column style="width:20%">
+							<h:outputLabel id="countrySearch" for="countrySearchInput" value="Country" rendered="#{ not empty viewTenderManagedBean.tender.city.province.country.id}" />
+						</p:column>
+						<p:column style="width:80%">
+							<p:selectOneMenu disabled="#{viewTenderManagedBean.readonly}" effect="fade" effectDuration="120" required="false" label="Country" id="countrySearchInput" rendered="#{ not empty viewTenderManagedBean.tender.city.province.country.id}" value="#{viewTenderManagedBean.tender.city.province.country.id}">
+								<p:ajax partialSubmit="true" listener="#{viewTenderManagedBean.changeCities}" update="citySearchInput" event="change" />
+								<f:selectItem itemLabel="Select a country" itemValue="-1" noSelectionOption="true" />
+								<f:selectItems value="#{ referenceCacheSingleton.countriesSelectItem }" var="obj" itemLabel="#{obj.label}" itemValue="#{obj.value}" />
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+
+
+
+					<p:row style="width:100%" rendered="#{ not empty viewTenderManagedBean.tender.city.id}">
+						<p:column style="width:20%">
+							<h:outputLabel id="citySearch" for="citySearchInput" value="City" rendered="#{ not empty viewTenderManagedBean.tender.city.id}" />
+
+						</p:column>
+						<p:column style="width:80%">
+							<p:selectOneMenu disabled="#{viewTenderManagedBean.readonly}" effect="fade" effectDuration="120" required="false" label="City" id="citySearchInput" rendered="#{ not empty viewTenderManagedBean.tender.city.id}" value="#{viewTenderManagedBean.tender.city.id}">
+								<f:selectItem itemLabel="Select a city" itemValue="-1" noSelectionOption="true" />
+								<f:selectItems value="#{ viewTenderManagedBean.selectedCountryCitiesSelectItem }" var="obj" itemLabel="#{obj.label}" itemValue="#{obj.value}" />
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+
+				</h:panelGrid>
+
+				<h:panelGrid id="regTenderCommandPanelGrid" columns="3">
+					<h:outputLabel />
+					<h:outputLabel />
+					<p:commandButton rendered="#{ (!viewTenderManagedBean.readonly) }" update=":tenderForm:growl" action="#{viewTenderManagedBean.update}" id="withIcon" icon="ui-icon-disk" value="Update" />
+				</h:panelGrid>
+
+				<f:facet name="actions">
+					<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+						<h:outputText styleClass="ui-icon ui-icon-help" />
+					</h:commandLink>
+					<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+						<h:outputText styleClass="ui-icon ui-icon-star" />
+					</h:commandLink>
+				</f:facet>
+
+			</p:panel>
+
+		</p:column>
+
+
+
+	</p:dataTable>
+
+</ui:composition>

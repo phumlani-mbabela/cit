@@ -1,0 +1,110 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+
+	<h:form id="userLogonFormPopup">
+		<p:growl id="messages" />
+
+		<p:dialog header="Login" widgetVar="dlg" resizable="false"
+			style="background:rgba(227,247,255,0.4);">
+
+			<h:panelGrid id="logonPanelGridPopup" columns="2"
+				style="background:rgba(227,247,255,0.4);">
+
+				<h:outputLabel id="lblEmailPopup" for="emailInputPopup"
+					value="Email" />
+				<h:inputText requiredMessage="Please enter a valid email address."
+					size="35" required="true" id="emailInputPopup"
+					value="#{userManagedBean.email}" label="Email" />
+
+				<h:outputLabel id="lblPasswordPopup" for="passwordInputPopup"
+					value="Password" />
+				<p:password value="#{userManagedBean.password}" label="Password"
+					requiredMessage="Please enter password." id="passwordInputPopup"
+					size="20" required="true" feedback="true" inline="true" />
+
+				<f:facet name="footer">
+					<p:commandButton update=":userLogonFormPopup:messages"
+						action="#{userManagedBean.login}" id="loginButton"
+						icon="ui-icon-unlocked" value="Login" title="Login" />
+				</f:facet>
+
+			</h:panelGrid>
+
+		</p:dialog>
+
+		<p:menubar id="mb">
+
+			<p:submenu style="color: black;" label="Main"
+				rendered="#{ not empty user_id}" icon="ui-icon-home">
+				<p:menuitem style="color: black;" icon="ui-icon-person"
+					value="Profile" url="profile.xhtml" />
+			</p:submenu>
+
+			<p:menuitem style="color: black;" value="Capture tender"
+				rendered="#{ not empty user_id}" url="captureTender.xhtml"
+				icon="ui-icon-document" />
+
+			<p:menuitem style="color: black;" rendered="#{ empty user_id}"
+				value="Login" onclick="PF('dlg').show();" icon="ui-icon-person" />
+
+			<p:submenu style="color: black;" label="Help" icon="ui-icon-help">
+				<p:menuitem ajax="false" target="_blank" style="color: black;"
+					value="Manual" icon="ui-icon-document"
+					url="http://www.tender4sure.com/doc/manual.pdf" />
+			</p:submenu>
+
+			<f:facet name="options">
+			
+			
+				<p:link href="fb.html" rendered="#{ empty user_id}" > <img src="images/login_facebook.png" alt="FB" style="width:170px;height:26px;" /> </p:link>
+
+				<div class="fb-like"
+					data-href="https://www.facebook.com/Tender4Sure-424024311132549"
+					data-layout="button_count" data-action="recommend"
+					data-show-faces="true" data-share="false"></div>
+
+				<div class="fb-like"
+					data-href="https://www.facebook.com/Tender4Sure-424024311132549"
+					data-layout="button_count" data-action="like"
+					data-show-faces="true" data-share="true"></div>
+
+				<a target="_blank"
+					href="https://www.facebook.com/Tender4Sure-424024311132549/"><img
+					src="images/facebook.png" alt="facebook" /></a>
+
+				<a target="_blank" href="https://twitter.com/tender4sure" ><img src="images/twitter.png"
+					alt="twitter" /></a>
+
+				<a target="_blank"
+					href="http://www.linkedin.com/profile/view?id=AAIAAA39U4cBBW8vLPu5PjhJm-NmOP55KgRttrc"><img
+					src="images/linkedin.png" alt="linkin" /></a>
+
+				<p:spacer width="1" height="22"
+					style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
+
+				<p:commandButton ajax="false" rendered="#{ not empty user_id}"
+					action="#{profileManagedBean.logout}" value="Logout"
+					icon="ui-icon-power" />
+
+			</f:facet>
+		</p:menubar>
+		<p:sticky target="mb" />
+
+		<div id="status"></div>
+
+	</h:form>
+
+</ui:composition>

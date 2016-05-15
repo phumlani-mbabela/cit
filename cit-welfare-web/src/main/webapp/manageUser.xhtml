@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Manage user.</title>
+
+	<meta property="fb:app_id" content="820661328009716" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://www.tender4sure.com" />
+	<meta property="og:site_name" content="Tender4Sure" />
+	<meta property="og:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta property="og:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta property="og:image" content="http://www.tender4sure.com/images/tender4sure.com.fb.1200x630.png" />
+
+	<meta name="keywords" content="search,online,free,private,public,tenders,planned tenders,tender,government,construction,tenderpreneurship,tenderpreneur,south african,johannesburg,SME,BEE,BEEE,business" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@tender4sure" />
+	<meta name="twitter:creator" content="@tender4sure" />
+	<meta name="twitter:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="twitter:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta property="twitter:image" content="http://www.tender4sure.com/images/tender4sure.com.twitter.280x150.png" />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<meta name="description" content="Tender4Sure - manage user." />
+	<meta name="keywords" content="tender" />
+	<meta name="author" content="Zwide Heights" />
+	<meta name="google-site-verification" content="9U71On1cISapMCzvMrPALIfn0Owrmc0lGMRDLZXgjW8" />
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+	<script type="text/javascript" src="js/googleanalytics.js"> </script>
+
+	<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</h:head>
+
+<h:body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/blue.tender4sure.com320x180.png" alt="Blue tender image." />
+
+			<div id="middle_content">
+				<h3>Tender4Sure is an Online Tender Management System</h3>
+				<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Banner -->
+				<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px" data-ad-client="ca-pub-6480511173137308" data-ad-slot="5943672477"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" rendered="#{empty user_id}" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
+			<li><h:outputLink value="about.xhtml">About Us</h:outputLink></li>
+			<li><h:outputLink value="subscribe.xhtml">Subscription</h:outputLink></li>
+			<li><h:outputLink value="services.xhtml">Services</h:outputLink></li>
+			<li><h:outputLink value="download.xhtml">Download</h:outputLink></li>
+			<li><h:outputLink value="tenders.xhtml">Tenders</h:outputLink></li>
+			<li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li>
+		</ul>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of templatetooplate_menu -->
+
+	<div id="tooplate_content">
+
+		<ui:include src="barMenu.xhtml" />
+
+		<div class="content_box">
+
+			<div class="col_w460_noborder">
+
+				<h:form id="userLogonForm">
+
+					<p:growl id="messages" life="3000" showDetail="true" />
+
+					<p:panel id="loginPanel" header="Login" style="width:500px; background-image: url('images/white-gray-bg.png');">
+						<h:panelGrid id="logonPanelGrid" columns="2" style="background:rgba(227,247,255,0.4);">
+
+							<h:outputLabel id="lblEmail" for="emailInput" value="Email" />
+							<h:inputText requiredMessage="Please enter a valid email address." size="35" required="true" id="emailInput" value="#{userManagedBean.email}" label="Email" />
+
+							<h:outputLabel id="lblPassword" for="passwordInput" value="Password" />
+							<p:password value="#{userManagedBean.password}" label="Password" requiredMessage="Please enter password." id="passwordInput" size="20" required="true" feedback="true" inline="true" />
+
+							<p:commandButton action="passwordReset.xhtml?faces-redirect=true" icon="ui-icon-key" value="Password reset" />
+							<p:commandButton update=":userLogonForm:messages" action="#{userManagedBean.login}" id="loginButton" icon="ui-icon-unlocked" value="Login" title="Login" />
+
+						</h:panelGrid>
+					</p:panel>
+
+					<p:draggable for="loginPanel" grid="20,40" />
+
+				</h:form>
+
+				<br />
+
+				<p:panel id="registerPanel" header="Register" style="width:500px; background-image: url('images/white-gray-bg.png');">
+
+					<h:form id="userRegistrationForm">
+
+						<p:growl id="messages" life="3000" showDetail="true" />
+
+						<h:panelGrid id="userRegistrationPanelGrid" columns="2" style="background:rgba(227,247,255,0.4);">
+
+							<h:outputLabel id="regEmail" for="regEmailInput" value="Email" />
+							<h:inputText requiredMessage="Please enter a valid email address." size="40" required="true" id="regEmailInput" value="#{userManagedBean.email}" label="Email" />
+
+							<h:outputLabel id="regPassword" for="regPasswordInput" value="Password" />
+							<p:password value="#{userManagedBean.password}" label="Password" requiredMessage="Please enter password." id="regPasswordInput" size="20" required="true" feedback="true" inline="true" />
+
+							<h:outputLabel id="regName" for="regNameInput" value="Name" />
+							<h:inputText requiredMessage="Please enter a name." size="20" required="true" id="regNameInput" value="#{userManagedBean.name}" label="Name" />
+
+							<h:outputLabel id="regSurname" for="regSurnameInput" value="Surname" />
+							<h:inputText requiredMessage="Please enter a surname." size="20" required="true" id="regSurnameInput" value="#{userManagedBean.surname}" label="Surname" />
+
+							<h:outputLabel id="createDOBDate" for="datetimeDateOfBirth" value="Date of birth" />
+							<p:calendar id="datetimeDateOfBirth" value="#{userManagedBean.dob}" pattern="MM/dd/yyyy" />
+
+							<h:outputLabel id="createGender" for="genderInput" value="Gender" />
+							<h:selectOneMenu panelStyle="width:130px" style="width:130px;" required="true" label="Gender" id="genderInput" value="#{userManagedBean.gender}">
+								<f:selectItem id="male" itemLabel="male" itemValue="male" />
+								<f:selectItem id="female" itemLabel="female" itemValue="female" />
+							</h:selectOneMenu>
+
+							<h:outputLabel id="countrySearch" for="countrySearchInput" value="Country" />
+							<p:selectOneMenu filter="true" filterMatchMode="startsWith" panelStyle="width:130px" style="width:130px;" effect="fade" effectDuration="120" required="true" label="Country" id="countrySearchInput" value="#{userManagedBean.countryCreate}">
+								<f:selectItem itemLabel="Select a country" itemValue="-1" noSelectionOption="true" />
+								<f:selectItems value="#{tenderManagedBean.countriesSelectItem}" var="obj" itemLabel="#{obj.label}" itemValue="#{obj.value}" />
+							</p:selectOneMenu>
+							
+							<h:link target="_blank" href="http://www.tender4sure.com/tandc.xhtml"  value="Terms and conditions" />
+		                    <p:selectBooleanCheckbox requiredMessage="Please confirm acceptance of terms and conditions." required="true" id="tc" itemLabel="I accept terms and conditions." value="#{userManagedBean.terms}" />		                    
+
+							<h:outputLabel />
+							<script type='text/javascript'>
+							        var RecaptchaOptions = {
+							            theme : 'white'
+							         };
+							    </script>
+
+							<div id="recaptcha_content">
+								<noscript>
+									<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ldr7woAAAAAADa_69Mr-EZKAeYyEx9N08q" height="300" width="500" frameborder="0"></iframe>
+									<br />
+									<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+									<input type='hidden' name='recaptcha_response_field' value='manual_challenge' />
+								</noscript>
+							</div>
+
+							<script type="text/javascript">
+							    $(document).ready(function() {
+							        $.getScript('http://www.google.com/recaptcha/api/js/recaptcha_ajax.js',
+							            function() {Recaptcha.create("6Ld1WBATAAAAAOcMMAkmsECGC1aS3_ynaRgy0f9D", "recaptcha_content");
+							        });
+							
+							    });
+							    </script>
+							    
+							<p:commandButton update=":userRegistrationForm:messages" action="#{userManagedBean.signup}" id="withIcon" icon="ui-icon-disk" value="Save" />
+							<p:commandButton update=":userRegistrationForm:messages" action="#{userManagedBean.reset}" id="resetButton" icon="ui-icon-refresh" value="Reset" title="Reset" />
+
+						</h:panelGrid>
+
+					</h:form>
+
+				</p:panel>
+
+				<p:draggable for="registerPanel" grid="20,40" />
+
+			</div>
+
+			<div class="cleaner"></div>
+		</div>
+
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+
+		<div id="tooplate_footer">
+
+			Copyright © 2016 <a href="http://www.tender4sure.com">Tender4Sure</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/disclaimer.html">Disclaimer</a>
+		</div>
+
+	</div>
+
+</h:body>
+</html>

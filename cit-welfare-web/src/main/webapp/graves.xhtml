@@ -1,0 +1,241 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CIT - Burial Services developed by Zwide Heights http://www.zwideheights.co.za (Mr Phumlani Mbabela - 084 777 0098).</title>
+
+	<meta property="og:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta property="og:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+
+	<meta name="twitter:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="twitter:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	
+	<meta name="keywords" content="search,online,free,private,public,tenders,planned tenders,tender,government,construction,tenderpreneurship,tenderpreneur,south african,johannesburg,SME,BEE,BEEE,business" />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+	<style type="text/css">
+		.singleLine {
+			text-overflow: ellipsis;
+			width: 10px;
+			white-space: nowrap;
+			overflow: hidden;
+			padding: 10px;
+		}
+	</style>
+
+</h:head>
+
+<h:body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/cit-spin.gif" alt="CIT - Burial Services." />
+
+			<div id="middle_content">
+
+				<h3>Tender4Sure is an Online Tender Management System</h3>
+
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" rendered="#{empty user_id}" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml" >Home</h:outputLink></li>
+			<li><h:outputLink value="graves.xhtml" class="current" >Graves</h:outputLink></li>
+			<li><h:outputLink value="grave.xhtml">Capture</h:outputLink></li>
+		</ul>
+
+		<div class="cleaner"></div>
+	</div>
+
+	<div id="tooplate_content">
+
+		<div class="content_box content_box_last">
+
+			<div class="col_w460_noborder">
+
+				<p:panel id="searchGravesPanel" header="Search graves" style="width:940px; background-image: url('images/white-gray-bg-long.png');">
+
+					<p:panel id="searchPanel" header="Search" style="width:900px; background-image: url('images/white-gray-bg.png');">
+					
+						<h:outputText value="Please sign in to unlock other system features." rendered="#{ empty user_id }"  />
+					
+						<h:form id="searchGraveForm">
+
+							<p:growl id="messages" life="3000" showDetail="true" />
+
+							<h:panelGrid id="searchGravesPanelGrid" columns="6" style="background:rgba(227,247,255,0.4);">
+
+								<p:selectOneMenu required="false" label="Gender" id="genderSearchInput" value="#{gravesManagedBean.genderSearch}">
+									<f:selectItem itemValue="#{null}" itemLabel="Select gender" noSelectionOption="true" />
+									<f:selectItem id="m"	itemLabel="Male" 	itemValue="M" 	/>
+									<f:selectItem id="f" 	itemLabel="Female" 	itemValue="F" 	/>
+								</p:selectOneMenu>
+								
+								<p:selectOneMenu required="false" label="Status" id="statusSearchInput" value="#{gravesManagedBean.statusSearch}">
+									<f:selectItem id="active"	itemLabel="Active" 	itemValue="0"   />
+									<f:selectItem id="deleted" 	itemLabel="Deleted" itemValue="1" 	/>
+								</p:selectOneMenu>
+								
+								<p:calendar id="datetimeSearchStartCal" 		value="#{gravesManagedBean.startDateSearch}" pattern="MM/dd/yyyy HH:mm:ss" />
+								
+								<p:calendar id="datetimeSearchEndCal" 		    value="#{gravesManagedBean.endDateSearch}" pattern="MM/dd/yyyy HH:mm:ss" />								
+															
+								<p:inputText id="nameSearchInput" 				value="#{gravesManagedBean.nameSearch}" />	
+								
+								<p:inputText id="surnameSearchInput" 			value="#{gravesManagedBean.surnameSearch}" />								
+
+							</h:panelGrid>
+
+							<h:panelGrid id="searchGravesPanelGrid2" columns="5" style="background:rgba(227,247,255,0.4);">
+								
+								<p:inputText id="ageSearchInput" 				value="#{gravesManagedBean.ageSearch}" />
+								
+								<p:inputText id="graveNumberSearchInput" 		value="#{gravesManagedBean.graveNumberSearch}" />
+								
+								<p:inputText id="addressSearchInput" 			value="#{gravesManagedBean.addressSearch}" />
+								
+								<p:inputText id="burialOrderNumberSearchInput"	value="#{gravesManagedBean.burialOrderNumberSearch}" />
+								
+								
+								<p:inputText id="issuedAtSearchInput" 			value="#{gravesManagedBean.issuedAtSearch}" />
+								
+								<p:inputText id="cityCouncilRegNoSearchInput" 	value="#{gravesManagedBean.cityCouncilRegNoSearch}" />
+								
+								<p:inputText id="citDebitNoteNumberSearchInput"	value="#{gravesManagedBean.cityDebitNoteNumberSearch}" />
+								
+								<p:inputText id="recieptNoSearchInput" 			value="#{gravesManagedBean.recieptNoSearch}" />
+
+							</h:panelGrid>
+							
+							<p:watermark for="genderSearchInput" 		value="Gender" />
+							<p:watermark for="statusSearchInput" 		value="Status" />
+							<p:watermark for="datetimeSearchStartCal" 	value="From date" />
+							<p:watermark for="datetimeSearchEndCal" 	value="End date" />
+							<p:watermark for="nameSearchInput" 			value="Name" />
+							
+							<p:watermark for="surnameSearchInput" 			value="Surname" />
+							<p:watermark for="ageSearchInput" 				value="Age" />
+							<p:watermark for="graveNumberSearchInput" 		value="Grave Number" />
+							<p:watermark for="addressSearchInput" 			value="Address" />
+							<p:watermark for="burialOrderNumberSearchInput" value="Burial Order Number" />
+
+							<p:watermark for="issuedAtSearchInput" 				value="Issued At" />
+							<p:watermark for="cityCouncilRegNoSearchInput" 		value="City Council Registration Number" />
+							<p:watermark for="citDebitNoteNumberSearchInput" 	value="City Debit Note Number" />
+							<p:watermark for="recieptNoSearchInput" 			value="Reciept Number" />
+
+
+							<h:panelGrid id="buttonsPanelGrid" columns="5" style="background:rgba(227,247,255,0.4);">
+							
+								<p:commandButton ajax="true" update=":searchGraveForm:messages :searchGraveForm:outputPanel" actionListener="#{gravesManagedBean.search}" icon="ui-icon-search" id="searchButton" value="Search" title="Search" />
+								<p:commandButton ajax="true" update=":searchGraveForm:searchGravesPanelGrid :searchGraveForm:searchGravesPanelGrid2 :searchGraveForm:outputPanel" actionListener="#{gravesManagedBean.resetSearch}" icon="ui-icon-refresh" id="resetSearchButton" value="Reset" title="Reset" />
+
+							</h:panelGrid>
+
+							<p:panel id="outputPanel" style="width:100%; background-image: url('images/white-gray-bg.png');" header="Search results">
+
+								<p:tooltip showEffect="clip" hideEffect="explode" />
+
+								<p:dataTable style="background:rgba(227,247,255,0.4); width:100%; font-family:Arial; font-size: 11px;" tableStyle="width:auto" rendered="#{ gravesManagedBean.graves.size() gt 0}" id="graveTable" var="graveview" value="#{gravesManagedBean.graveDataModel}" rows="10" selectionMode="single" rowKey="#{graveview.id}" selection="#{gravesManagedBean.selectedGrave}" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="10" emptyMessage="No Records to display." resizableColumns="true" resizeMode="expand">
+
+									<p:ajax id="rowSelect" 	event="rowSelect" 	listener="#{gravesManagedBean.onRowSelect}" />
+									<p:ajax id="pageSelect" event="page" 		listener="#{gravesManagedBean.onPageSelect}" update="graveTable" />
+
+									<p:column headerText="Name">
+										<h:outputText value="#{graveview.name}" />
+									</p:column>
+
+									<p:column headerText="Surname">
+										<h:outputText value="#{graveview.surname}" />
+									</p:column>
+									
+									<p:column headerText="Age">
+										<h:outputText value="#{graveview.age}" />
+									</p:column>								
+									
+									<p:column headerText="Gender">
+										<h:outputText value="#{graveview.sex}" />
+									</p:column>
+									
+									<p:column headerText="Date Of Death">
+										<h:outputText value="#{graveview.dateOfDeath}">
+											<f:convertDateTime pattern="MM-dd-yyyy" />
+										</h:outputText>
+									</p:column>
+									
+									<p:column headerText="Grave #">
+										<h:outputText value="#{graveview.graveNumber}" />
+									</p:column>
+
+									<p:column headerText="Burial Order #">
+										<h:outputText value="#{graveview.burialOrderNumber}" />
+									</p:column>
+									
+									<p:column headerText="Address">
+										<h:outputText value="#{graveview.address}" />
+									</p:column>
+									
+									<p:column headerText="Issued At">
+										<h:outputText value="#{graveview.issuedAt}" />
+									</p:column>
+									
+									<p:column headerText="City Council Reg No">
+										<h:outputText value="#{graveview.cityCouncilRegNo}" />
+									</p:column>
+
+									<p:column headerText="City Debit Note #">
+										<h:outputText value="#{graveview.citDebitNoteNumber}" />
+									</p:column>
+									
+									<p:column headerText="Reciept #">
+										<h:outputText value="#{graveview.recieptNo}" />
+									</p:column>	
+
+								</p:dataTable>
+							</p:panel>
+
+							<p:resizable for="outputPanel" ghost="true" />
+
+						</h:form>
+
+					</p:panel>
+
+				</p:panel>
+
+			</div>
+
+			<br />
+
+			<div class="cleaner"></div>
+		</div>
+
+		<div class="cleaner"></div>
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+
+		<div id="tooplate_footer">
+			Copyright © 2016 <a href="http://www.cit.com">CIT</a> &nbsp; &nbsp; &nbsp; <a href="http://www.cit.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.cit.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.cit.com/disclaimer.html">Disclaimer</a> 
+		</div>
+
+	</div>
+
+</h:body>
+</html>

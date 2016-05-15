@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="zwideheightsJobsDeleteFile" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+    
+	<step id="fileDeletionChunk" >
+		<chunk item-count="3">
+			<reader ref="deleteOrderItemReader"></reader>
+			<processor ref="deleteOrderItemProcessor"></processor>
+			<writer ref="deleteOrderItemWriter"></writer>
+		</chunk>
+	</step>
+
+</job>

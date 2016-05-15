@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>User profile.</title>
+
+	<meta property="fb:app_id" content="820661328009716" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://www.tender4sure.com" />
+	<meta property="og:site_name" content="Tender4Sure" />
+	<meta property="og:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta property="og:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta property="og:image" content="http://www.tender4sure.com/images/tender4sure.com.fb.1200x630.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@tender4sure" />
+	<meta name="twitter:creator" content="@tender4sure" />
+	<meta name="twitter:title" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="twitter:description" content="Tender4Sure is a online tender management company based in Johannesburg South Africa." />
+	<meta property="twitter:image" content="http://www.tender4sure.com/images/tender4sure.com.twitter.280x150.png" />
+
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/tender.icon.png" />
+
+	<meta name="description" content="Tender4Sure - Free Online Tender Management System." />
+	<meta name="keywords" content="search,online,free,private,public,tenders,planned tenders,tender,government,construction,tenderpreneurship,tenderpreneur,south african,johannesburg,SME,BEE,BEEE,business" />
+	<meta name="author" content="Zwide Heights" />
+	<meta name="google-site-verification" content="9U71On1cISapMCzvMrPALIfn0Owrmc0lGMRDLZXgjW8" />
+
+	<script type="text/javascript" src="js/googleanalytics.js"> </script>
+
+	<link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
+	<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</h:head>
+
+<h:body>
+
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle">
+
+			<img src="images/blue.tender4sure.com320x180.png" alt="Blue tender image." />
+
+			<div id="middle_content">
+
+				<h3>Tender4Sure is an Online Tender Management System</h3>
+				<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Banner -->
+				<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px" data-ad-client="ca-pub-6480511173137308" data-ad-slot="5943672477"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+				<div class="wwu_btn">
+					<h:outputLink value="manageUser.xhtml" rendered="#{empty user_id}" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="tooplate_menu">
+
+		<ul>
+			<li><h:outputLink value="index.xhtml">Home</h:outputLink></li>
+			<li><h:outputLink value="about.xhtml">About Us</h:outputLink></li>
+			<li><h:outputLink value="subscribe.xhtml">Subscription</h:outputLink></li>
+			<li><h:outputLink value="services.xhtml">Services</h:outputLink></li>
+			<li><h:outputLink value="download.xhtml">Download</h:outputLink></li>
+			<li><h:outputLink value="tenders.xhtml">Tenders</h:outputLink></li>
+			<li><h:outputLink value="contact.xhtml">Contact</h:outputLink></li>
+		</ul>
+
+		<div class="cleaner"></div>
+	</div>
+	<!-- end of templatetooplate_menu -->
+
+	<div id="tooplate_content">
+
+		<ui:include src="barMenu.xhtml" />
+
+		<div class="content_box">
+
+			<div class="col_w460_noborder">
+
+				<h:outputLabel value="Please logon" rendered="#{ empty user_id}" />
+				<br />
+				<div class="btn_more">
+					<h:outputLink rendered="#{ empty user_id }" value="manageUser.xhtml">Logon or Register.</h:outputLink>
+				</div>
+
+				<h:form id="profileManagementForm" rendered="#{not empty user_id}">
+
+					<h3 style="margin-top: 0">User profile</h3>
+
+					<p:accordionPanel style="width:500px; background-image: url('images/white-gray-bg.png');">
+
+						<p:tab title="User details">
+
+							<p:panel style="width:400px; background-image: url('images/white-gray-bg.png');">
+
+								<h:panelGrid columns="2" style="width:100%; font-family:Arial; font-size: 12px; background:rgba(227,247,255,0.4); ">
+
+									<h:outputLabel id="regEmail" for="regEmailInput" value="Email" />
+									<h:inputText requiredMessage="Please enter a valid email address." size="40" required="true" id="regEmailInput" value="#{profileManagedBean.user.email}" label="Email" />
+
+									<h:outputLabel id="regName" for="regNameInput" value="Name" />
+									<h:inputText requiredMessage="Please enter a name." size="20" required="true" id="regNameInput" value="#{profileManagedBean.user.name}" label="Name" />
+
+									<h:outputLabel id="regSurname" for="regSurnameInput" value="Surname" />
+									<h:inputText requiredMessage="Please enter a surname." size="20" required="true" id="regSurnameInput" value="#{profileManagedBean.user.surname}" label="Surname" />
+
+									<h:outputLabel id="createDOBDate" for="datetimeDateOfBirth" value="Date of birth" />
+									<p:calendar id="datetimeDateOfBirth" value="#{profileManagedBean.user.dob}" pattern="MM/dd/yyyy" />
+
+									<h:outputLabel id="createGender" for="genderInput" value="Sector" />
+									<h:selectOneMenu style="width:130px; background-color: #e3f7ff" required="true" label="Gender" id="genderInput" value="#{profileManagedBean.user.gender}">
+										<f:selectItem id="male" itemLabel="male" itemValue="male" />
+										<f:selectItem id="female" itemLabel="female" itemValue="female" />
+									</h:selectOneMenu>
+
+									<h:outputLabel />
+									<p:commandButton action="#{profileManagedBean.updateUser}" id="updateUserButton" icon="ui-icon-refresh" value="Update" title="Update" />
+
+								</h:panelGrid>
+
+							</p:panel>
+
+						</p:tab>
+
+						<p:tab title="Password reset">
+
+							<p:panel style="width:400px; background-image: url('images/white-gray-bg.png');">
+								<h:panelGrid columns="2" style="width:100%; font-family:Arial; font-size: 12px; background:rgba(227,247,255,0.4); ">
+
+									<h:outputLabel id="lblPassword" for="passwordInput" value="Password" />
+									<p:password value="#{profileManagedBean.password}" label="Password" requiredMessage="Please enter password." id="passwordInput" size="20" required="true" feedback="true" inline="true" />
+
+									<h:outputLabel id="lblPasswordConfirm" for="passwordInputConfirmation" value="Password confirmation" />
+									<p:password value="#{profileManagedBean.password}" label="Password confirmation" requiredMessage="Please enter password." id="passwordInputConfirmation" size="20" required="true" feedback="true" inline="true" />
+
+									<h:outputLabel />
+									<p:commandButton action="#{profileManagedBean.changePassword}" id="changePasswordButton" icon="ui-icon-refresh" value="Change password" title="Change password" />
+
+								</h:panelGrid>
+							</p:panel>
+
+						</p:tab>
+
+						<p:tab title="Buy Subscription">
+							<p:panel style="width:400px; background-image: url('images/white-gray-bg.png');">
+
+							</p:panel>
+						</p:tab>
+
+						<p:tab title="Invoices">
+
+							<p:panel style="width:400px; background-image: url('images/white-gray-bg.png');">
+								<p:dataTable tableStyle="width:auto;" rendered="#{profileManagedBean.invoices.size > 0}" id="invoiceTable" var="invoicevar" value="#{profileManagedBean.invoices}" rows="10" selectionMode="single" rowKey="#{invoicevar.id}" selection="#{profileManagedBean.selectedInvoice}" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20" emptyMessage="No Records to display." resizableColumns="true" resizeMode="expand">
+
+									<p:ajax event="rowSelect" listener="#{profileManagedBean.onInvoiceRowSelect}" />
+
+									<p:column headerText="Invoice Number">
+										<h:outputText value="#{invoicevar.invoiceNumber}" />
+									</p:column>
+
+									<p:column headerText="Item">
+										<h:outputText value="#{invoicevar.item}" />
+									</p:column>
+
+									<p:column headerText="Unit cost">
+										<h:outputText value="#{invoicevar.unitCost}" />
+									</p:column>
+
+									<p:column headerText="Processed">
+										<h:outputText value="#{invoicevar.processed}" />
+									</p:column>
+
+									<p:column headerText="Create Date">
+										<h:outputText value="#{invoicevar.createDate}" />
+									</p:column>
+
+									<p:column headerText="Qty">
+										<h:outputText value="#{invoicevar.quantity}" />
+									</p:column>
+
+									<p:column headerText="Tax">
+										<h:outputText value="#{invoicevar.tax}" />
+									</p:column>
+
+									<p:column headerText="Total cost">
+										<h:outputText value="#{invoicevar.totalCost}" />
+									</p:column>
+
+									<p:column headerText="Description">
+										<h:outputText value="#{invoicevar.description}" />
+									</p:column>
+
+									<p:column headerText="Download">
+										<p:commandButton actionListener="#{profileManagedBean.download}" icon="ui-icon-arrowstop-1-s" value="Download" title="Download" />
+									</p:column>
+
+								</p:dataTable>
+							</p:panel>
+
+						</p:tab>
+
+					</p:accordionPanel>
+
+				</h:form>
+
+			</div>
+
+			<div class="cleaner"></div>
+		</div>
+
+	</div>
+
+	<div id="tooplate_footer_wrapper">
+
+		<div id="tooplate_footer">
+
+			Copyright © 2016 <a href="http://www.tender4sure.com">Tender4Sure</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/privacypolicy.html">Privacy Policy</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/termsofuse.html">Terms of Use</a> &nbsp; &nbsp; &nbsp; <a href="http://www.tender4sure.com/disclaimer.html">Disclaimer</a>
+		</div>
+
+	</div>
+
+</h:body>
+</html>
