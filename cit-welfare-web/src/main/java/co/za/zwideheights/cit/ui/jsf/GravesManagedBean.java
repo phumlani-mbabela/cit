@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.jboss.logging.Logger;
 import org.primefaces.component.datatable.DataTable;
@@ -46,7 +47,7 @@ public class GravesManagedBean implements Serializable {
 	private String cityDebitNoteNumberSearch;
 	private String recieptNoSearch;
 	
-	private Grave selectedGrave;
+	private Grave grave;
 	private List<Grave> graves;
 	private Long listSize;
 
@@ -153,7 +154,7 @@ public class GravesManagedBean implements Serializable {
 		cityDebitNoteNumberSearch=null;
 		recieptNoSearch=null;
 		
-		selectedGrave=null;
+		grave=null;
 		graves=null;
 		listSize=null;
 
@@ -167,11 +168,19 @@ public class GravesManagedBean implements Serializable {
 
 	public void onRowSelect(SelectEvent event) {
 		try {
-			Grave tender = ((Grave) event.getObject());
-			Long id = tender.getId();
+			
+			grave = ((Grave) event.getObject());
+			Long id = grave.getId();
+			
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			session.setAttribute("grave_id", id);
+			
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("grave_id",id);
+			
 			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 			ec.getSessionMap().put("grave_id", id);
-			ec.redirect(ec.getRequestContextPath() + "/grave.xhtml?id=" + id.toString() );
+			ec.redirect(ec.getRequestContextPath() + "/graveview.xhtml?id=" + id.toString() );
+			
 		} catch (IOException e) {
 			LOGGER.error(e);
 		}
@@ -294,14 +303,6 @@ public class GravesManagedBean implements Serializable {
 		this.recieptNoSearch = recieptNoSearch;
 	}
 
-	public Grave getSelectedGrave() {
-		return selectedGrave;
-	}
-
-	public void setSelectedGrave(Grave selectedGrave) {
-		this.selectedGrave = selectedGrave;
-	}
-
 	public List<Grave> getGraves() {
 		return graves;
 	}
@@ -340,6 +341,14 @@ public class GravesManagedBean implements Serializable {
 
 	public void setGraveService(GraveService graveService) {
 		this.graveService = graveService;
+	}
+
+	public Grave getGrave() {
+		return grave;
+	}
+
+	public void setGrave(Grave grave) {
+		this.grave = grave;
 	}
 
 }

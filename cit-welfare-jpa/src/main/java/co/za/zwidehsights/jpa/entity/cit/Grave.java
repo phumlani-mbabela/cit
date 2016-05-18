@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "Grave")
 @NamedQueries({
+	@NamedQuery(name="Grave.findById"						, query="SELECT o FROM Grave o WHERE o.id = :id"   ),
 	@NamedQuery(name="Grave.findByName"						, query="SELECT o FROM Grave o WHERE o.name    = :name"   ),
 	@NamedQuery(name="Grave.findBySurname"	    			, query="SELECT o FROM Grave o WHERE o.surname = :surname"),
 	@NamedQuery(name="Grave.findByGraveNumberNameSurname"	, query="SELECT o FROM Grave o WHERE o.graveNumber = :graveNumber AND o.name = :name AND o.surname = :surname"),
@@ -63,7 +64,7 @@ public class Grave implements Serializable {
  	@Column(name = "reciept_no", length=15) 
 	private String recieptNo;
  	
- 	@Column(name = "dateOfDeath",unique=false) 
+ 	@Column(name = "date_of_death",unique=false) 
  	@Temporal(TemporalType.DATE)
 	private Date dateOfDeath;
  	

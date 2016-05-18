@@ -153,7 +153,7 @@
 
 								<p:tooltip showEffect="clip" hideEffect="explode" />
 
-								<p:dataTable style="background:rgba(227,247,255,0.4); width:100%; font-family:Arial; font-size: 11px;" tableStyle="width:auto" rendered="#{ gravesManagedBean.graves.size() gt 0}" id="graveTable" var="graveview" value="#{gravesManagedBean.graveDataModel}" rows="10" selectionMode="single" rowKey="#{graveview.id}" selection="#{gravesManagedBean.selectedGrave}" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="10" emptyMessage="No Records to display." resizableColumns="true" resizeMode="expand">
+								<p:dataTable style="background:rgba(227,247,255,0.4); width:100%; font-family:Arial; font-size: 11px;" tableStyle="width:auto" rendered="#{ gravesManagedBean.graves.size() gt 0}" id="graveTable" var="graveview" value="#{gravesManagedBean.graveDataModel}" rows="10" selectionMode="single" rowKey="#{graveview.id}" selection="#{gravesManagedBean.grave}" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="10" emptyMessage="No Records to display." resizableColumns="true" resizeMode="expand">
 
 									<p:ajax id="rowSelect" 	event="rowSelect" 	listener="#{gravesManagedBean.onRowSelect}" />
 									<p:ajax id="pageSelect" event="page" 		listener="#{gravesManagedBean.onPageSelect}" update="graveTable" />

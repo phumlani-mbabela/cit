@@ -12,7 +12,6 @@ import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Hibernate;
 
 import co.za.zwideheights.cit.param.GraveConstant;
 import co.za.zwidehsights.jpa.entity.cit.Grave;
@@ -28,39 +27,40 @@ public class GraveServiceBean implements GraveService {
 	@Override
 	public Grave findById(Long id) {
 		return em.find(Grave.class, id);
+		//return (Grave) em.createNamedQuery("Grave.findById").setParameter("id", id).getSingleResult();
 	}
 
 	@Override
 	public List<Grave> find(Map<String, Object> params, Integer pageStartIndex, Integer pageSize) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT COUNT(g.id) FROM citdb.Grave g WHERE 1=1 ");
+		sb.append("SELECT * FROM citdb.Grave WHERE 1=1 ");
 		
 		for (String key : params.keySet()) {
 
 			if (key.equals(GraveConstant.GRAVENUMBER)) {
-				sb.append(" AND g.graveNumber LIKE " + "%" + ":graveNumber" + "%");
+				sb.append(" AND grave_number LIKE :graveNumber");
 			} else if (key.equals(GraveConstant.SEX)) {
-				sb.append(" AND g.sex = :sex ");
+				sb.append(" AND sex = :sex ");
 			} else if (key.equals(GraveConstant.AGE)) {
-				sb.append(" AND g.age LIKE " + "%" + ":age" + "%");
+				sb.append(" AND age LIKE :age");
 			} else if (key.equals(GraveConstant.SURNAME)) {
-				sb.append(" AND g.surname LIKE " + "%" + ":surname" + "%");
+				sb.append(" AND surname LIKE :surname");
 			} else if (key.equals(GraveConstant.NAME)) {
-				sb.append(" AND g.name LIKE " + "%" + ":name" + "%");
+				sb.append(" AND name LIKE :name");
 			} else if (key.equals(GraveConstant.ADDRESS)) {
-				sb.append(" AND g.address LIKE " + "%" + ":address" + "%");
+				sb.append(" AND address LIKE :address");
 			} else if (key.equals(GraveConstant.BURIALORDERNUMBER)) {
-				sb.append(" AND g.burialOrderNumber LIKE " + "%" + ":burialOrderNumber" + "%");
+				sb.append(" AND burial_order_number LIKE :burialOrderNumber");
 			} else if (key.equals(GraveConstant.ISSUEDAT)) {
-				sb.append(" AND g.issuedAt LIKE " + "%" + ":issuedAt" + "%");
+				sb.append(" AND issued_at LIKE :issuedAt");
 			} else if (key.equals(GraveConstant.CITYCOUNCILREGNO)) {
-				sb.append(" AND g.cityCouncilRegNo LIKE " + "%" + ":cityCouncilRegNo" + "%");
+				sb.append(" AND city_council_reg_no LIKE :cityCouncilRegNo");
 			} else if (key.equals(GraveConstant.CITDEBITNOTENUMBER)) {
-				sb.append(" AND g.citDebitNoteNumber LIKE " + "%" + ":citDebitNoteNumber" + "%");
+				sb.append(" AND cit_debit_note_number LIKE :citDebitNoteNumber");
 			} else if (key.equals(GraveConstant.RECIEPTNO)) {
-				sb.append(" AND g.recieptNo LIKE " + "%" + ":recieptNo" + "%");
+				sb.append(" AND reciept_no LIKE :recieptNo");
 			} else if (key.equals(GraveConstant.DATEOFDEATH)) {
-				sb.append(" AND g.dateOfDeath >= :dateOfDeath ");
+				sb.append(" AND date_of_death >= :dateOfDeath ");
 			}
 			
 		}
@@ -72,27 +72,27 @@ public class GraveServiceBean implements GraveService {
 			if (key.equals(GraveConstant.DATEOFDEATH)) {
 				query.setParameter(GraveConstant.DATEOFDEATH, (Calendar) params.get(key), TemporalType.DATE);
 			} else if (key.equals(GraveConstant.RECIEPTNO)) {
-				query.setParameter(GraveConstant.RECIEPTNO, params.get(key));
+				query.setParameter(GraveConstant.RECIEPTNO, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.CITDEBITNOTENUMBER)) {
-				query.setParameter(GraveConstant.CITDEBITNOTENUMBER, params.get(key));
+				query.setParameter(GraveConstant.CITDEBITNOTENUMBER, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.CITYCOUNCILREGNO)) {
-				query.setParameter(GraveConstant.CITYCOUNCILREGNO, params.get(key));
+				query.setParameter(GraveConstant.CITYCOUNCILREGNO, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.ISSUEDAT)) {
-				query.setParameter(GraveConstant.ISSUEDAT, params.get(key));
+				query.setParameter(GraveConstant.ISSUEDAT, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.BURIALORDERNUMBER)) {
-				query.setParameter(GraveConstant.BURIALORDERNUMBER, params.get(key));
+				query.setParameter(GraveConstant.BURIALORDERNUMBER, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.ADDRESS)) {
-				query.setParameter(GraveConstant.ADDRESS, params.get(key));
+				query.setParameter(GraveConstant.ADDRESS, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.NAME)) {
-				query.setParameter(GraveConstant.NAME, params.get(key));
+				query.setParameter(GraveConstant.NAME, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.SURNAME)) {
-				query.setParameter(GraveConstant.SURNAME, params.get(key));
+				query.setParameter(GraveConstant.SURNAME, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.GRAVENUMBER)) {
-				query.setParameter(GraveConstant.GRAVENUMBER, params.get(key));
+				query.setParameter(GraveConstant.GRAVENUMBER, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.SEX)) {
 				query.setParameter(GraveConstant.SEX, params.get(key));
 			} else if (key.equals(GraveConstant.AGE)) {
-				query.setParameter(GraveConstant.AGE, params.get(key));
+				query.setParameter(GraveConstant.AGE, "%"+params.get(key)+"%");
 			}
 		}
 
@@ -106,65 +106,65 @@ public class GraveServiceBean implements GraveService {
 	@Override
 	public Long count(Map<String, Object> params) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT COUNT(*) FROM citdb.Grave g WHERE 1=1 ");
+		sb.append("SELECT COUNT(*) FROM citdb.Grave WHERE 1=1 ");
 
 		for (String key : params.keySet()) {
 
 			if (key.equals(GraveConstant.GRAVENUMBER)) {
-				sb.append(" AND g.graveNumber LIKE " + "%" + ":graveNumber" + "%");
+				sb.append(" AND grave_number LIKE :graveNumber");
 			} else if (key.equals(GraveConstant.SEX)) {
-				sb.append(" AND g.sex = :sex ");
+				sb.append(" AND sex = :sex ");
 			} else if (key.equals(GraveConstant.AGE)) {
-				sb.append(" AND g.age LIKE " + "%" + ":age" + "%");
+				sb.append(" AND age LIKE :age");
 			} else if (key.equals(GraveConstant.SURNAME)) {
-				sb.append(" AND g.surname LIKE " + "%" + ":surname" + "%");
+				sb.append(" AND surname LIKE :surname");
 			} else if (key.equals(GraveConstant.NAME)) {
-				sb.append(" AND g.name LIKE " + "%" + ":name" + "%");
+				sb.append(" AND name LIKE :name");
 			} else if (key.equals(GraveConstant.ADDRESS)) {
-				sb.append(" AND g.address LIKE " + "%" + ":address" + "%");
+				sb.append(" AND address LIKE :address");
 			} else if (key.equals(GraveConstant.BURIALORDERNUMBER)) {
-				sb.append(" AND g.burialOrderNumber LIKE " + "%" + ":burialOrderNumber" + "%");
+				sb.append(" AND burial_order_number LIKE :burialOrderNumber");
 			} else if (key.equals(GraveConstant.ISSUEDAT)) {
-				sb.append(" AND g.issuedAt LIKE " + "%" + ":issuedAt" + "%");
+				sb.append(" AND issued_at LIKE :issuedAt");
 			} else if (key.equals(GraveConstant.CITYCOUNCILREGNO)) {
-				sb.append(" AND g.cityCouncilRegNo LIKE " + "%" + ":cityCouncilRegNo" + "%");
+				sb.append(" AND city_council_reg_no LIKE :cityCouncilRegNo");
 			} else if (key.equals(GraveConstant.CITDEBITNOTENUMBER)) {
-				sb.append(" AND g.citDebitNoteNumber LIKE " + "%" + ":citDebitNoteNumber" + "%");
+				sb.append(" AND cit_debit_note_number LIKE :citDebitNoteNumber");
 			} else if (key.equals(GraveConstant.RECIEPTNO)) {
-				sb.append(" AND g.recieptNo LIKE " + "%" + ":recieptNo" + "%");
+				sb.append(" AND reciept_no LIKE :recieptNo");
 			} else if (key.equals(GraveConstant.DATEOFDEATH)) {
-				sb.append(" AND g.dateOfDeath >= :dateOfDeath ");
+				sb.append(" AND date_of_death >= :dateOfDeath ");
 			}
 		}
 
-		Query query = em.createNativeQuery(sb.toString(), Grave.class);
+		Query query = em.createNativeQuery(sb.toString());
 
 		for (String key : params.keySet()) {
 
 			if (key.equals(GraveConstant.DATEOFDEATH)) {
 				query.setParameter(GraveConstant.DATEOFDEATH, (Calendar) params.get(key), TemporalType.DATE);
 			} else if (key.equals(GraveConstant.RECIEPTNO)) {
-				query.setParameter(GraveConstant.RECIEPTNO, params.get(key));
+				query.setParameter(GraveConstant.RECIEPTNO, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.CITDEBITNOTENUMBER)) {
-				query.setParameter(GraveConstant.CITDEBITNOTENUMBER, params.get(key));
+				query.setParameter(GraveConstant.CITDEBITNOTENUMBER, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.CITYCOUNCILREGNO)) {
-				query.setParameter(GraveConstant.CITYCOUNCILREGNO, params.get(key));
+				query.setParameter(GraveConstant.CITYCOUNCILREGNO, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.ISSUEDAT)) {
-				query.setParameter(GraveConstant.ISSUEDAT, params.get(key));
+				query.setParameter(GraveConstant.ISSUEDAT, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.BURIALORDERNUMBER)) {
-				query.setParameter(GraveConstant.BURIALORDERNUMBER, params.get(key));
+				query.setParameter(GraveConstant.BURIALORDERNUMBER, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.ADDRESS)) {
-				query.setParameter(GraveConstant.ADDRESS, params.get(key));
+				query.setParameter(GraveConstant.ADDRESS, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.NAME)) {
-				query.setParameter(GraveConstant.NAME, params.get(key));
+				query.setParameter(GraveConstant.NAME, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.SURNAME)) {
-				query.setParameter(GraveConstant.SURNAME, params.get(key));
+				query.setParameter(GraveConstant.SURNAME, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.GRAVENUMBER)) {
-				query.setParameter(GraveConstant.GRAVENUMBER, params.get(key));
+				query.setParameter(GraveConstant.GRAVENUMBER, "%"+params.get(key)+"%");
 			} else if (key.equals(GraveConstant.SEX)) {
 				query.setParameter(GraveConstant.SEX, params.get(key));
 			} else if (key.equals(GraveConstant.AGE)) {
-				query.setParameter(GraveConstant.AGE, params.get(key));
+				query.setParameter(GraveConstant.AGE, "%"+params.get(key)+"%");
 			}
 		}
 

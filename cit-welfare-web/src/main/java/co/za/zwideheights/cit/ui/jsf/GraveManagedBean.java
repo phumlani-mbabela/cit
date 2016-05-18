@@ -7,12 +7,13 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -26,7 +27,7 @@ import co.za.zwidehsights.jpa.entity.cit.TUser;
 
 @SuppressWarnings("serial")
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class GraveManagedBean implements Serializable {
 
 	private static final Logger LOGGER = Logger.getLogger(GraveManagedBean.class);
@@ -72,13 +73,18 @@ public class GraveManagedBean implements Serializable {
 	private Date dod;
 	
 	private UploadedFile file;
+	
+	private Long id;
 
 	@PostConstruct
 	public void init() {
 		try{
-			Long id = Long.getLong( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("grave_id").toString() );
+
+			id = Long.parseLong( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("grave_id").toString() );			
 			grave = graveService.findById( id );
+			
 		}catch( Exception e ){
+			LOGGER.error(e);
 		}
 	}
 
@@ -168,8 +174,6 @@ public class GraveManagedBean implements Serializable {
         }
     }
 
-	
-	
 	public void update(){
 		
 		grave.setGraveNumber(graveNumber);
@@ -407,6 +411,14 @@ public class GraveManagedBean implements Serializable {
 
 	public void setFile(UploadedFile file) {
 		this.file = file;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }
